@@ -1,0 +1,7 @@
+rAnge = range(3, 20, 2)
+print(len(rAnge))
+print(rAnge)
+print(rAnge[0])
+print(rAnge[1])
+print(rAnge[2])
+print(rAnge[len(rAnge)-1])
