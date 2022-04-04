@@ -3,12 +3,30 @@ from pandas import DataFrame, read_csv
 import matplotlib.pyplot as plt
 import pandas as pd
 
-bills = [10.99, 20.99, 12.80, 21.60]
-tips = [1.01, 2.50, 4.80, 0.80]
-sex = ["male", "male", "female", "male"]
+firstTips=pd.read_csv(r'C:\Users\csyn\Documents\leon school\SCHOOL school\semester 6\ai\AIClass\Lab1\task33.csv')
+print(firstTips)
 
-dataSet = list(zip(bills, tips, sex))
+# name=firstTips.loc[:,"name"]
+# print(name)
+# tip=firstTips.loc[:,"tip"]
+# sex=firstTips.loc[:,"sex"]
+# total_bill=firstTips.loc[:,"total_bill"]
 
-df = pd.DataFrame(data=dataSet,columns=["bills", "tips", "sex"])
-print(df["bills"].mean(axis=0))
-print(df["tips"].max())
+tipDataSet = list(zip(firstTips["name"], firstTips["sex"], firstTips["tip"], firstTips["total_bill"]))
+tipDataSet
+
+tp = pd.DataFrame(data = tipDataSet, columns=['name','sex', 'tip', 'total_bill'])
+
+tp.to_csv("tips", index=False, header=['name', 'sex', 'tip',  'total_bill'])
+
+
+print(tp["total_bill"].mean(axis=0))
+# print((16.99+10.34+21.01+23.68+24.59)/5)
+
+print(tp["tip"].max())
+# print(max(firstTips["tip"]))
+
+
+
+
+
