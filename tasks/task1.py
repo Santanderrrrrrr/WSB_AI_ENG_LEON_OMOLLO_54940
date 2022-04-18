@@ -23,8 +23,9 @@ print(df.values[1,1])
 #splitting the df.values into training and test set
 #splitting the set to test set (30%) and train se (70%)
 
-(train_set, test_set) = train_test_split(df.values, train_size=0.7, random_state=54940
-                                         )
+(train_set, test_set) = train_test_split(df.values, train_size=0.7, random_state=54940)
+
+
 #checking records in test set and how many there are:
 print(test_set)
 print(test_set.shape[0])
