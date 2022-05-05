@@ -28,6 +28,8 @@ def fitness_func(solution, solution_idx):
     fitness = 1/(1 + numpy.abs(sum1-desired_output))
     return fitness
 
+
+
 fitness_function = fitness_func
 
 # size of the population
@@ -55,44 +57,34 @@ mutation_type = "random"
 mutation_percent_genes = 10
 
 # initiate the algorithm, give all the parameters from above
-ga_instance = pygad.GA(gene_space=gene_space,
-                       num_generations=num_generations,
-                       num_parents_mating=num_parents_mating,
-                       fitness_func=fitness_function,
-                       sol_per_pop=sol_per_pop,
-                       num_genes=num_genes,
-                       parent_selection_type=parent_selection_type,
-                       keep_parents=keep_parents,
-                       crossover_type=crossover_type,
-                       mutation_type=mutation_type,
-                       mutation_percent_genes=mutation_percent_genes,
-                       stop_criteria=["reach_1"])
+bewl = True
+while bewl:
+    ga_instance = pygad.GA(gene_space=gene_space,
+                           num_generations=num_generations,
+                           num_parents_mating=num_parents_mating,
+                           fitness_func=fitness_function,
+                           sol_per_pop=sol_per_pop,
+                           num_genes=num_genes,
+                           parent_selection_type=parent_selection_type,
+                           keep_parents=keep_parents,
+                           crossover_type=crossover_type,
+                           mutation_type=mutation_type,
+                           mutation_percent_genes=mutation_percent_genes,
+                           stop_criteria=["reach_1"])
 
 
 
-# run the algorithm, it will start the generation cycle
-while True:
+    # run the algorithm, it will start the generation cycle
+
     ga_instance.run()
-        # if numpy.sum(ga_instance.best_solution().solution * item_values)==1630:
-        #     break
-
-
-    # summary: we return the solution
     solution, solution_fitness, solution_idx = ga_instance.best_solution()
+    if numpy.sum(solution * item_values)==1630:
+        break
 
-    iteration = 0
-    summer = 0
 
-    def summation (iteration, solution, summer):
-        for x in solution:
-            summer += item_values[iteration]*x
-            iteration += 1
-        return summer
 
-    while summation != 1630:
-        ga_instance.run()
 
-solution, solution_fitness, solution_idx = ga_instance.best_solution()
+# solution, solution_fitness, solution_idx = ga_instance.best_solution()
 
 
 print("Parameters of the best solution : {solution}".format(solution=solution))
