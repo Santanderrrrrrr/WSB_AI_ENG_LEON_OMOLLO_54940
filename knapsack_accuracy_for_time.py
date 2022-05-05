@@ -5,7 +5,7 @@ import time
 start = time.time()
 print("timer started")
 
-#######################################
+################################################
 
 item_names = ["clock", "painting_nature", "painting_portrait", "radio", "laptop", "lamp", "silver_cutlery", "porcerlain_cups", "bronze_statue", "leather_bag", "vacuum_cleaner"]
 item_values = [100, 300, 200, 40, 500, 70, 100, 250, 300, 280, 300]
