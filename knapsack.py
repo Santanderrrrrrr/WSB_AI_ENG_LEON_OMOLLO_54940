@@ -65,13 +65,35 @@ ga_instance = pygad.GA(gene_space=gene_space,
                        crossover_type=crossover_type,
                        mutation_type=mutation_type,
                        mutation_percent_genes=mutation_percent_genes,
-                       stop_criteria=["reach_25"])
+                       stop_criteria=["reach_1"])
+
+
 
 # run the algorithm, it will start the generation cycle
-ga_instance.run()
+while True:
+    ga_instance.run()
+        # if numpy.sum(ga_instance.best_solution().solution * item_values)==1630:
+        #     break
 
-# summary: we return the solution
+
+    # summary: we return the solution
+    solution, solution_fitness, solution_idx = ga_instance.best_solution()
+
+    iteration = 0
+    summer = 0
+
+    def summation (iteration, solution, summer):
+        for x in solution:
+            summer += item_values[iteration]*x
+            iteration += 1
+        return summer
+
+    while summation != 1630:
+        ga_instance.run()
+
 solution, solution_fitness, solution_idx = ga_instance.best_solution()
+
+
 print("Parameters of the best solution : {solution}".format(solution=solution))
 print("Fitness value of the best solution = {solution_fitness}".format(solution_fitness=solution_fitness))
 
