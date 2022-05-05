@@ -57,8 +57,8 @@ mutation_type = "random"
 mutation_percent_genes = 10
 
 # initiate the algorithm, give all the parameters from above
-bewl = True
-while bewl:
+
+while True:
     ga_instance = pygad.GA(gene_space=gene_space,
                            num_generations=num_generations,
                            num_parents_mating=num_parents_mating,
@@ -84,7 +84,7 @@ while bewl:
 
 
 
-# solution, solution_fitness, solution_idx = ga_instance.best_solution()
+
 
 
 print("Parameters of the best solution : {solution}".format(solution=solution))
