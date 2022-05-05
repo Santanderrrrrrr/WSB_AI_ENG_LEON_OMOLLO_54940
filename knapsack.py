@@ -70,26 +70,9 @@ ga_instance = pygad.GA(gene_space=gene_space,
 
 
 # run the algorithm, it will start the generation cycle
-while True:
-    ga_instance.run()
-        # if numpy.sum(ga_instance.best_solution().solution * item_values)==1630:
-        #     break
 
+ga_instance.run()
 
-    # summary: we return the solution
-    solution, solution_fitness, solution_idx = ga_instance.best_solution()
-
-    iteration = 0
-    summer = 0
-
-    def summation (iteration, solution, summer):
-        for x in solution:
-            summer += item_values[iteration]*x
-            iteration += 1
-        return summer
-
-    while summation != 1630:
-        ga_instance.run()
 
 solution, solution_fitness, solution_idx = ga_instance.best_solution()
 
